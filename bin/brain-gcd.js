@@ -1,24 +1,22 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import { greetingUser, randomNumber } from '../src/index.js';
+import {
+  greetingUser, randomNumber, calculateNod,
+} from '../src/index.js';
 
 const user = greetingUser();
 
-console.log('Answer "yes" if the number is even, otherwise answer "no"');
+console.log('Find the greatest common divisor of given numbers.');
 
 let counter = 0;
 
 const game = () => {
   while (counter !== 3) {
-    const randomNumberFunc = randomNumber();
-    let answer = '';
-    console.log(`Question: ${randomNumberFunc}`);
-    if (randomNumberFunc % 2 === 0) {
-      answer = 'yes';
-    } else {
-      answer = 'no';
-    }
-    const answerUser = readlineSync.question('Your answer: ');
+    const randomNumberOne = randomNumber();
+    const randomNumberTwo = randomNumber();
+    console.log(`Question: ${randomNumberOne} ${randomNumberTwo}`);
+    const answer = calculateNod(randomNumberOne, randomNumberTwo);
+    const answerUser = Number(readlineSync.question('Your answer: '));
     if (answer === answerUser) {
       console.log('Correct!');
       counter += 1;
