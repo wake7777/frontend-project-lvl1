@@ -4,5 +4,8 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - name: Run linter
-        run: npx eslint .
+      - uses: actions/checkout@v2
+      - name: install packages
+        run: make install
+      - name: run linter
+        run: make lint
