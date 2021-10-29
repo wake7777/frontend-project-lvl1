@@ -42,3 +42,22 @@ export const calculateNod = (firstNumber, secondNumber) => {
   }
   return false;
 };
+
+export const getRandomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+export const progression = (startnumber, stepProgression) => {
+  const result = [startnumber];
+  while (result.length < 10) {
+    result.push(result[result.length - 1] + stepProgression);
+  }
+  return result;
+};
+
+export const progressionGap = () => {
+  const prog = progression(getRandomInRange(1, 100), getRandomInRange(1, 9));
+  const randomNum = getRandomInRange(1, 9);
+  const answer = prog[randomNum];
+  prog[randomNum] = '..';
+  console.log(`Question: ${prog.join(' ')}`);
+  return answer;
+};
